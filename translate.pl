@@ -12,7 +12,7 @@ my @dict = (
     { ru => '#КонецОбласти', en => '#EndRegion'}, 
 
     { ru => '&НаСервере', en => '&AtServer'}, 
-    { ru => '&НаКлиенте', en => '&AtClient'},my $filename_en 
+    { ru => '&НаКлиенте', en => '&AtClient'},
 
     { ru => 'Истина', en => 'True'}, 
     { ru => 'Ложь', en => 'False'}, 
@@ -36,8 +36,8 @@ my @dict = (
     { ru => 'Прервать;', en => 'Breack;'}, 
 
     #{ ru => 'Отказ', en => 'Cancel'}, 
-    { ru => 'Возврат;', en => 'Retern;'}, 
-    { ru => 'Возврат ', en => 'Retern '},  
+    { ru => 'Возврат;', en => 'Return;'}, 
+    { ru => 'Возврат ', en => 'Return '},  
 
     { ru => 'Элементы.', en => 'Items.'}, 
     #{ ru => 'Элемент', en => 'Item'}, 
