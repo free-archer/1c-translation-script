@@ -30,3 +30,8 @@ perl ./translate.py ./Module.bsl ./Module_traslate.bsl
 
 скачать perl:
 https://strawberryperl.com
+
+
+# Примеры запуска
+В файле Module.bsl находится модуль на котором можно проверить работу скриптов
+В файле testrun.txt примеры строк запуска из консоли
