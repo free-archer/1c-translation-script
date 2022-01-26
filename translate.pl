@@ -106,7 +106,7 @@ close($fh);
 
 foreach my $reg (@dict) {
     if ($reg->{ru}  eq '' || $reg->{en} eq '') {
-        Continue;
+        next;
     }
     
     foreach my $line (@lines) {

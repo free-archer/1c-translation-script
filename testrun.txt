@@ -1,5 +1,5 @@
-perl ./translate.pl ./Module.bsl
-python ./translate.py --f ./Module.bsl
+perl ./translate.pl ./Module.bsl ./Module.bsl_en_pl
+python ./translate.py --f ./Module.bsl --o ./Module.bsl_en_py
 
 perl ./translate.pl /home/archer/Work1C/GIT/tools_ui_1c_international/src/ToolsInternational/src/DataProcessors/UT_JSONEditor/Forms/Форма/Module.bsl
 python ./translate.py --f /home/archer/Work1C/GIT/tools_ui_1c_international/src/ToolsInternational/src/DataProcessors/UT_JSONEditor/Forms/Форма/Module.bsl

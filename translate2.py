@@ -97,38 +97,22 @@ args = parser.parse_args()
 
 filename = args.f
 
-filename = "./Module.bsl"
-
 if (args.o):
     filename_en = args.o
 else:
     filename_en = filename
 
-filename_en = "./Module.bsl_en"    
-
 lines = list()
 with open(filename, "r", encoding="utf-8") as f:
     old_data = f.read()
-    for line in f.readlines():
-        lines.append(line)
-
-    f.close()
 
 for reg in dict_ru_en:
     if (reg["ru"] == "" or reg["en"] == ""):
         continue
 
-    for line in lines:
-        if (line[0:2] != "//"):
-            oldline = line
-            line = line.replace(reg["ru"], reg["en"])
-            if oldline != line:
-                print (oldline + " -> " + line)
-        
+    old_data = old_data.replace(reg["ru"], reg["en"])
+      
 with open(filename_en, "w", encoding="utf-8") as f:
-    for line in lines:
-        f.write(line)
-
-    f.close()
+        f.write(old_data)
 
 print ("Done!")
