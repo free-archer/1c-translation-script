@@ -81,7 +81,18 @@ dict_ru_en = [
     { "ru": "ЗаписьЖурналаРегистрации", "en": "WriteLogEvent"}, 
     { "ru": "ЗаполнитьЗначенияСвойств", "en": "FillPropertyValues"}, 
 
-    { "ru": "Символы.ПС", "en": "Chars.LF"}, 
+    #События формы
+    { "ru": "ПриСозданииНаСервере(Отказ, СтандартнаяОбработка)", "en": "OnCreateAtServer(Cancel, StandardProcessing)"},
+    { "ru": "ПриОткрытии(Отказ)", "en": "OnOpen(Cancel)"},
+    { "ru": "", "en": ""},
+    { "ru": "", "en": ""},
+    { "ru": "", "en": ""},
+    { "ru": "", "en": ""},
+    { "ru": "", "en": ""},
+    { "ru": "", "en": ""},
+
+
+    { "ru": "Символы.ПС", "en": "Chars.LF"},
 ]
 
 parser = argparse.ArgumentParser()
@@ -107,8 +118,12 @@ with open(filename, "r", encoding="utf-8") as f:
 newlines = list()
 for reg in dict_ru_en:
     for line in lines:
-        if (line[0:2] != "//"):
-            newlines.append(line.replace(reg["ru"], reg["en"]))
+        if (line[0:2] != "//" && reg["ru"] != "" && reg["en"] != "") :
+            newline = line.replace(reg["ru"], reg["en"])
+            newlines.append(newline)
+            if newline != line:
+                print (line + "->" + newline)
+           
         else:
             newlines.append(line)
 
@@ -117,3 +132,5 @@ with open(filename_en, "w", encoding="utf-8") as f:
         f.write(line)
 
     f.close()
+
+print ("Done!")

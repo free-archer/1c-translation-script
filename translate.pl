@@ -81,7 +81,17 @@ my @dict = (
     { ru => 'ЗаписьЖурналаРегистрации', en => 'WriteLogEvent'}, 
     { ru => 'ЗаполнитьЗначенияСвойств', en => 'FillPropertyValues'}, 
 
+    #События формы
+    { ru => 'ПриСозданииНаСервере\(Отказ, СтандартнаяОбработка\)', en => 'OnCreateAtServer(Cancel, StandardProcessing)'}, 
+    { ru => 'ПриОткрытии\(Отказ\)', en => 'OnOpen(Cancel)'}, 
+    { ru => '', en => ''}, 
+    { ru => '', en => ''}, 
+    { ru => '', en => ''}, 
+    { ru => '', en => ''}, 
+    { ru => '', en => ''}, 
+
     { ru => 'Символы.ПС', en => 'Chars.LF'}, 
+
 );
 
 my $filename = $ARGV[0];
@@ -95,9 +105,17 @@ while (my $line = <$fh>) {
 close($fh);
 
 foreach my $reg (@dict) {
+    if ($reg->{ru}  eq '' || $reg->{en} eq '') {
+        Continue;
+    }
+    
     foreach my $line (@lines) {
         unless ($line =~ /^\//) {
-            $line =~ s/$reg->{ru}/$reg->{en}/;
+            my $old_line = $line;
+            $line =~ s/$reg->{ru}/$reg->{en}/g;
+            if ($line ne $old_line) {
+                print "$old_line -> $line";
+            }
         }
     }
 }
