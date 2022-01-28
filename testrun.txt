@@ -8,4 +8,5 @@ python ./translate.py --f /home/archer/Work1C/GIT/tools_ui_1c_international/src/
 
 windows:
 perl ./translate.pl C:\Work1C\GIT\1c-translation-script\Module.bsl
+perl ./translate.pl C:\Work1C\GIT\tools_ui_1c_international\src\ToolsInternational\src\DataProcessors\UT_JSONEditor\Forms\Форма\Module.bsl
 python ./translate.py --f C:\Work1C\GIT\1c-translation-script\Module.bsl

@@ -35,7 +35,9 @@ my @dict = (
     { ru => 'Продолжить;', en => 'Continue;'}, 
     { ru => 'Прервать;', en => 'Breack;'}, 
 
-    #{ ru => 'Отказ', en => 'Cancel'}, 
+    { ru => '\(Отказ\)', en => '(Cancel)'}, 
+    { ru => '\(Отказ', en => '(Cancel'}, 
+    { ru => ' Отказ,', en => ' Cancel,'}, 
     { ru => 'Возврат;', en => 'Return;'}, 
     { ru => 'Возврат ', en => 'Return '},  
 
@@ -80,17 +82,53 @@ my @dict = (
     { ru => 'УстановитьПривилегированныйРежим', en => 'SetPrivilegedMode'}, 
     { ru => 'ЗаписьЖурналаРегистрации', en => 'WriteLogEvent'}, 
     { ru => 'ЗаполнитьЗначенияСвойств', en => 'FillPropertyValues'}, 
+    { ru => 'Символы.ПС', en => 'Chars.LF'}, 
+
+    { ru => '.Свойство\(', en => '.Property('}, 
+    { ru => 'Перем ', en => 'Var '}, 
+    { ru => 'ЭтотОбъект', en => 'ThisObject'}, 
+
+    { ru => 'РеквизитФормыВЗначение', en => 'FormAttributeToValue'}, 
+    { ru => 'ПолучитьМакет\(', en => 'GetTemplate('}, 
+    { ru => 'ПолучитьИмяВременногоФайла', en => 'GetTempFileName'}, 
+    { ru => 'СоздатьКаталог\(', en => 'CreateDirectory('}, 
+    { ru => 'ОткрытьПотокДляЧтения', en => 'OpenStreamForRead'}, 
+    { ru => 'ЧтениеZipФайла', en => 'ZipFileReader'}, 
+    { ru => 'ИзвлечьВсе\(', en => 'ExtractAll('}, 
+    { ru => 'РежимВосстановленияПутейФайловZIP', en => 'ZIPRestoreFilePathsMode'}, 
+    { ru => 'НайтиФайлы\(', en => 'FindFiles('}, 
+    { ru => 'ПолучитьРазделительПути', en => 'GetPathSeparator'}, 
+    { ru => 'СтрЗаменить\(', en => 'StrReplace('}, 
+    { ru => 'ДвоичныеДанные\(', en => 'BinaryData('}, 
+    { ru => 'ПоместитьВоВременноеХранилище', en => 'PutToTempStorage'}, 
+    { ru => 'ПолучитьИзВременногоХранилища', en => 'GetFromTempStorage'}, 
+    { ru => '', en => ''}, 
+    { ru => '', en => ''}, 
+    { ru => '', en => ''},     
 
     #События формы
     { ru => 'ПриСозданииНаСервере\(Отказ, СтандартнаяОбработка\)', en => 'OnCreateAtServer(Cancel, StandardProcessing)'}, 
     { ru => 'ПриОткрытии\(Отказ\)', en => 'OnOpen(Cancel)'}, 
-    { ru => '', en => ''}, 
-    { ru => '', en => ''}, 
-    { ru => '', en => ''}, 
-    { ru => '', en => ''}, 
-    { ru => '', en => ''}, 
+    { ru => 'СтандартнаяОбработка', en => 'StandardProcessing'}, 
+    { ru => '.Видимость', en => '.Visible'}, 
+    { ru => '.Доступность', en => '.Enabled'}, 
+    { ru => 'ПоказатьВопрос\(', en => 'ShowQueryBox('}, 
+    { ru => 'РежимДиалогаВопрос', en => 'QuestionDialogMode'}, 
+    { ru => 'ПередЗакрытием(', en => 'BeforeClose('}, 
+    { ru => 'ЗавершениеРаботы,', en => 'Exit,'}, 
+    { ru => 'ТекстПредупреждения,', en => 'WarningText,'}, 
+    { ru => 'НачатьУдалениеФайлов', en => 'BeginDeletingFiles'}, 
 
-    { ru => 'Символы.ПС', en => 'Chars.LF'}, 
+    #Переменные
+    { ru => ' Параметры.', en => ' Parameters.'}, 
+    { ru => '=Параметры.', en => '=Parameters.'}, 
+    { ru => 'ДополнительныеПараметры', en => 'AdditionalParameters'}, 
+    
+    { ru => 'УникальныйИдентификатор', en => 'UUID'}, 
+    { ru => 'ЭтаФорма', en => 'ThisForm'}, 
+    { ru => '\(Команда\)', en => '(Command)'}, 
+    { ru => '', en => ''}, 
+    { ru => '', en => ''}, 
 
 );
 
