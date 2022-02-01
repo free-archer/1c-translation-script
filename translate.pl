@@ -145,6 +145,7 @@ while (my $line = <$fh>) {
 }
 close($fh);
 
+my $doreplases = 0;
 foreach my $reg (@dict) {
     if ($reg->{ru}  eq '' || $reg->{en} eq '') {
         next;
@@ -155,7 +156,8 @@ foreach my $reg (@dict) {
             my $old_line = $line;
             $line =~ s/$reg->{ru}/$reg->{en}/g;
             if ($line ne $old_line) {
-                print "$old_line -> $line";
+                #print "$old_line -> $line";
+                $doreplases++;
             }
         }
     }
@@ -175,4 +177,5 @@ foreach my $line (@lines) {
     print $fw $line;
 }
 close($fw);
-print "Done\n"
+
+print "Done $doreplases replases \n"
