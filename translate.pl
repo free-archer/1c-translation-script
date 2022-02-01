@@ -102,7 +102,7 @@ my @dict = (
     { ru => 'ДвоичныеДанные\(', en => 'BinaryData('}, 
     { ru => 'ПоместитьВоВременноеХранилище', en => 'PutToTempStorage'}, 
     { ru => 'ПолучитьИзВременногоХранилища', en => 'GetFromTempStorage'}, 
-    { ru => '', en => ''}, 
+    { ru => 'ЗначениеЗаполнено\(', en => 'ValueIsFilled('}, 
     { ru => '', en => ''}, 
     { ru => '', en => ''},     
 
@@ -114,11 +114,14 @@ my @dict = (
     { ru => '.Доступность', en => '.Enabled'}, 
     { ru => 'ПоказатьВопрос\(', en => 'ShowQueryBox('}, 
     { ru => 'РежимДиалогаВопрос', en => 'QuestionDialogMode'}, 
-    { ru => 'ПередЗакрытием(', en => 'BeforeClose('}, 
+    { ru => 'ПередЗакрытием\(', en => 'BeforeClose('}, 
     { ru => 'ЗавершениеРаботы,', en => 'Exit,'}, 
     { ru => 'ТекстПредупреждения,', en => 'WarningText,'}, 
     { ru => 'НачатьУдалениеФайлов', en => 'BeginDeletingFiles'}, 
-
+    { ru => 'ПодключитьОбработчикОжидания', en => 'AttachIdleHandler'}, 
+    { ru => 'Закрыть\(', en => 'Close('}, 
+    { ru => '', en => ''}, 
+    { ru => '', en => ''}, 
     #Переменные
     { ru => ' Параметры.', en => ' Parameters.'}, 
     { ru => '=Параметры.', en => '=Parameters.'}, 
@@ -127,8 +130,8 @@ my @dict = (
     { ru => 'УникальныйИдентификатор', en => 'UUID'}, 
     { ru => 'ЭтаФорма', en => 'ThisForm'}, 
     { ru => '\(Команда\)', en => '(Command)'}, 
-    { ru => '', en => ''}, 
-    { ru => '', en => ''}, 
+    { ru => ' Экспорт', en => ' Export'}, 
+    { ru => 'Формат\(', en => 'Format('}, 
 
 );
 
