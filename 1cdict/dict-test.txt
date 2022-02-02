@@ -1,0 +1,3 @@
+Область - Region
+Процедура - Procedure
+Если - If

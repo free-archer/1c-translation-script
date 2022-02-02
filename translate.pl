@@ -1,5 +1,6 @@
 use strict;
 use utf8;
+use Data::Dumper::Simple;
 
 my @dict = (
     { ru => 'Процедура ', en => 'Procedure '}, 
@@ -134,6 +135,8 @@ my @dict = (
     { ru => 'Формат\(', en => 'Format('}, 
 
 );
+
+warn Dumper @dict;
 
 my $filename = $ARGV[0];
 open(my $fh, '<:encoding(UTF-8)', $filename)
