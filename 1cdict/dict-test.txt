@@ -1,3 +1,6 @@
 Область - Region
 Процедура - Procedure
+КонецПроцедуры - EndProcedure
 Если - If
+КонецЕсли - EnfIf
+Тогда - Then
