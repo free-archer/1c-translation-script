@@ -1,6 +1,7 @@
 use strict;
 use utf8;
 use Data::Dumper::Simple;
+use 5.010;
 
 #my $filename = $ARGV[0];
 my $filedict = "dict.txt";
@@ -15,7 +16,7 @@ while (my $line = <$fh>) {
     $rec{'ru'} = $1;
     $rec{'en'} = $2;
 
-    push(@dict, %rec);
+    push(@dict, \%rec);
 }
 close($fh);
 
@@ -33,17 +34,18 @@ while (my $line = <$fh>) {
 close($fh);
 
 my $doreplases = 0;
-foreach my %reg (@dict) {
-    if ($reg{ru}  eq '' || $reg{en} eq '') {
-        next;
-    }
-    
+foreach my $reg (@dict) {
     foreach my $line (@lines) {
         unless ($line =~ /^\//) {
             my $old_line = $line;
-            $line =~ s/$reg{ru}/$reg{en}/g;
+
+	    my $ru = $reg->{ru};
+	    my $en = $reg->{en};
+
+	    $line =~ s/(?<![А-я])$ru(?![А-я])/$en/g;
+
             if ($line ne $old_line) {
-                #print "$old_line -> $line";
+#                print "$old_line -> $line";
                 $doreplases++;
             }
         }
