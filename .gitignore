@@ -1,2 +1,4 @@
 *.bsl
 *.sh
+/.vscode/
+/.idea/
