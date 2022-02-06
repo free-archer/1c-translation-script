@@ -50,8 +50,9 @@ perl ./translate.pl C:\Work1C\GIT\tools_ui_1c_international\src\ToolsInternation
 python ./translate.py --f C:\Work1C\GIT\1c-translation-script\Module.bsl
 ```
 
-#Скрипт перевода с использованием словаря
+# Скрипт перевода с использованием словаря
 На основе файла с текстом синтаксиса помощника 1С **shcntx_ru** был разработан словарь **dict.txt** (9000 уникальных строк).
+
 Так же в начало словаря были добавлены фразы языка 1С.
 
 Структура файла простая:
@@ -95,8 +96,5 @@ windows:
 perl translate-with-dict.pl C:\Work1C\GIT\tools_ui_1c_international\src\ToolsInternational\src\DataProcessors\UT_JSONEditor\Forms\Форма\Module.bsl
 ```
 
-###Обратная связь
-Просьба об ошибках сообщать через Issues, а так же отправлять информацию по корректировке словаря так же через Issues или Pull requests.
-
-
-
+### Обратная связь
+Просьба об ошибках сообщать через Issues, а так же отправлять информацию по корректировке словаря через Issues или Pull requests.
