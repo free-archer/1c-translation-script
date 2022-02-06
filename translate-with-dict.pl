@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 use utf8;
-use Data::Dumper::Simple;
-use 5.010;
+#use Data::Dumper::Simple;
+#use 5.010;
 
 #get parameters
 my $filename;
@@ -62,7 +62,8 @@ foreach my $reg (@dict) {
 	    my $ru = $reg->{ru};
 	    my $en = $reg->{en};
 
-	    $line =~ s/(?<![А-я])$ru(?![А-я])/$en/g;
+	    #$line =~ s/(?<![А-я])$ru(?![А-я])/$en/g;
+        $line =~ s/(?<=[^А-яёЁ]|^)$ru(?=[^А-яёЁ]|$)/$en/g;
 
             if ($line ne $old_line) {
 #                print "$old_line -> $line";
@@ -80,4 +81,4 @@ foreach my $line (@lines) {
 }
 close($fw);
 
-print "Done $doreplases replases \n"
+print "Done $doreplases replaces \n"
