@@ -1,8 +1,19 @@
-#основные операторы
+#Области
 Область - Region
+ПрограммныйИнтерфейс - Public
+СлужебныйПрограммныйИнтерфейс - Internal
+СлужебныеПроцедурыИФункции - Private
+ОписаниеПеременных - Variables
+ОбработчикиСобытий - EventHandlers
+ОбработчикиСобытийФормы - FormEventHandlers
+Инициализация - Initialize
+#Основные операторы
 КонецОбласти - EndRegion
 НаСервере - AtServer
 НаКлиенте - AtClient
+НаСервереБезКонтекста - AtServerNoContext
+НаКлиентеНаСервереБезКонтекста - AtClientAtServerNoContext
+НаКлиентеНаСервере - AtClientAtServer
 Функция - Function
 Возврат - Return
 КонецФункции - EndFunction
@@ -26,6 +37,7 @@
 Если - If
 Тогда - Then
 ИначеЕсли - ElsIf
+Иначе - Else
 КонецЕсли - EndIf
 Попытка - Try
 Исключение - Except
@@ -35,8 +47,9 @@
 Ложь - False
 И - And
 Не - Not
+Или - Or
 Экспорт - Export
-#из файла shcntx_ru
+#Ключевые слова из файла shcntx_ru
 WSСсылки - WSReferences
 АгентКлиентскогоПриложения - ClientApplicationAgent
 БезопасноеХранилище - SecureStorage
