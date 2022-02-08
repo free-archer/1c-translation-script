@@ -10,14 +10,12 @@ my ($param1, $param2) = @ARGV;
 
 my $filename;
 my $filename_en;
-print $param1. "\n";
-
 if ($param1) {
-    print "inter\n";
     if ($param1 eq "-i") {
         print "Enter full-path to a module what you will plan to translate:\n";
         $filename = <STDIN>;
-    	$filename = chomp($filename);
+        chomp($filename);
+        $filename_en = $filename;
     }
     else {
         $filename = $param1;
