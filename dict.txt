@@ -990,7 +990,7 @@ HTTPСервисОтвет - HTTPServiceResponse
 ТекущееЗначение - CurrentValue
 ТипТекущегоЗначения - CurrentValueType
 ЗаписьJSON - JSONWriter
-Параметры - Settings
+#Параметры - Settings
 ПроверятьСтруктуру - ValidateStructure
 ЗаписатьЗначение - WriteValue
 ЗаписатьИмяСвойства - WritePropertyName
