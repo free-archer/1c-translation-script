@@ -1,27 +1,43 @@
 use strict;
 use warnings;
 use utf8;
+use open qw(:std :utf8);
 #use Data::Dumper::Simple;
 #use 5.010;
 
 #get parameters
+my ($param1, $param2) = @ARGV;
+
 my $filename;
 my $filename_en;
-if (scalar($ARGV)) {
-    $filename = $ARGV[0];
-    if ($ARGV[1]) {
-        $filename_en = $ARGV[1];
+print $param1. "\n";
+
+if ($param1) {
+    print "inter\n";
+    if ($param1 eq "-i") {
+        print "Enter full-path to a module what you will plan to translate:\n";
+        $filename = <STDIN>;
+    	$filename = chomp($filename);
     }
     else {
-        $filename_en = $filename;
+        $filename = $param1;
+        if ($param2) {
+            $filename_en = $ARGV[1];
+        }
+        else {
+            $filename_en = $filename;
+        }
     }
 }
 else {
     $filename = 'Module.bsl';
-    $filename_en = 'Module-en.bsl';
+    $filename_en = 'Module-en2.bsl';
 }
 
+print "The source file: $filename\n";
+print "The result file: $filename_en\n";
 
+print "In process ... \n";
 
 my $filedict = "dict.txt";
 open(my $fhdict, '<:encoding(UTF-8)', $filedict)
@@ -41,7 +57,7 @@ while (my $line = <$fhdict>) {
     push(@dict, \%rec);
 }
 close($fhdict);
-
+#exit;
 #warn Dumper @dict;
 
 open(my $fh, '<:encoding(UTF-8)', $filename)
@@ -63,11 +79,13 @@ foreach my $reg (@dict) {
 	    my $en = $reg->{en};
 
 	    #$line =~ s/(?<![А-я])$ru(?![А-я])/$en/g;
-        $line =~ s/(?<=[^А-яёЁ]|^)$ru(?=[^А-яёЁ]|$)/$en/g;
+        $line =~ s/\b$ru\b/$en/g;
+        #$line =~ s/(?<=[^А-яёЁ]|^)$ru(?=[^А-яёЁ]|$)/$en/g;
 
             if ($line ne $old_line) {
-#                print "$old_line -> $line";
+                #print "$old_line -> $line";
                 $doreplases++;
+               #
             }
         }
     }
