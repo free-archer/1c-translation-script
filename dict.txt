@@ -34,6 +34,8 @@
 Из - In
 Пока - While
 Перейти - Goto
+Прервать - Break
+Продолжить - Continue
 Если - If
 Тогда - Then
 ИначеЕсли - ElsIf
@@ -49,6 +51,7 @@
 Не - Not
 Или - Or
 Экспорт - Export
+СтандартнаяОбработка - StandardProcessing
 #Ключевые слова из файла shcntx_ru
 WSСсылки - WSReferences
 АгентКлиентскогоПриложения - ClientApplicationAgent
@@ -8172,7 +8175,6 @@ Space - Space
 Нет - No
 ОК - OK
 Повторить - Retry
-Прервать - Abort
 Пропустить - Ignore
 КодировкаXBase - XBaseEncoding
 ANSI - ANSI

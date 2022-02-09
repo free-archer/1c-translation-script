@@ -34,6 +34,8 @@
 Из - In
 Пока - While
 Перейти - Goto
+Прервать - Break
+Продолжить - Continue
 Если - If
 Тогда - Then
 ИначеЕсли - ElsIf
@@ -49,3 +51,4 @@
 Не - Not
 Или - Or
 Экспорт - Export
+СтандартнаяОбработка - StandardProcessing
