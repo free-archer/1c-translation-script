@@ -7,6 +7,8 @@
 ОбработчикиСобытий - EventHandlers
 ОбработчикиСобытийФормы - FormEventHandlers
 Инициализация - Initialize
+ОбработчикиСобытийЭлементовШапкиФормы - FormHeaderItemsEventHandlers
+ОбработчикиКомандФормы - CommandFormEventHandlers
 #Основные операторы
 КонецОбласти - EndRegion
 НаСервере - AtServer
@@ -52,6 +54,9 @@
 Или - Or
 Экспорт - Export
 СтандартнаяОбработка - StandardProcessing
+#additional
+ВыбраннаяСтрока - SelectedRow
+сч - ind
 #Ключевые слова из файла shcntx_ru
 WSСсылки - WSReferences
 АгентКлиентскогоПриложения - ClientApplicationAgent
@@ -885,7 +890,6 @@ URL - URL
 Метод - Method
 ПоддерживаемыеНаборыЗнаков - AcceptCharset
 ТипСодержимого - EncType
-#Элементы - Elements
 ЭлементТелоHTML - HTMLBodyElement
 АктивнаяСсылка - ALink
 ПосещеннаяСсылка - Vlink
@@ -993,7 +997,6 @@ HTTPСервисОтвет - HTTPServiceResponse
 ТекущееЗначение - CurrentValue
 ТипТекущегоЗначения - CurrentValueType
 ЗаписьJSON - JSONWriter
-#Параметры - Settings
 ПроверятьСтруктуру - ValidateStructure
 ЗаписатьЗначение - WriteValue
 ЗаписатьИмяСвойства - WritePropertyName
