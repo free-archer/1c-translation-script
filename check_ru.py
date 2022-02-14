@@ -19,7 +19,7 @@ for line in lines:
     ind += 1
     if not re.search('[А-яёЁ]', line):
         continue
-    print(f"{ind} - {line}")
+    print(f"{ind} - {line.rstrip()}")
     col += 1
 
 print(f"Found {col} lines")
