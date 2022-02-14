@@ -1,5 +1,7 @@
 import re
 import argparse
+from datetime import datetime
+start_time = datetime.now()
 
 filedict = 'dict.txt'
 dict_ru_en = list()
@@ -49,3 +51,4 @@ with open(filename_en, "w", encoding="utf-8") as f:
         f.write(line)
 
 print(f"Done! Repaleces {count} lines")
+print(datetime.now() - start_time)
