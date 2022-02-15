@@ -57,6 +57,9 @@
 #additional
 ВыбраннаяСтрока - SelectedRow
 сч - ind
+ВОЗР - ASC
+УБЫВ - DESC
+НоваяСтрока - NewLine
 #Ключевые слова из файла shcntx_ru
 WSСсылки - WSReferences
 АгентКлиентскогоПриложения - ClientApplicationAgent
