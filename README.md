@@ -3,57 +3,12 @@
 
 В репозитории 2 скрипта выполняющие одинаковую функцию. Один написан python второй на perl, сделал для сравнения удобства разработки.
 
-Оба скрипта содержат словарь, который можно пополнять по аналогии с существующей структурой.
-Но есть различия:
-В python срабатывает простая замена строк функцией replace, по всему файлу в целом. Комментарии не игнорируются (но вероятность что в коменатрии будет совпадение очень мала).
+Оба скрипта работают на основе словаря, аналогичным образом с использованием регулярного выражения.
 
-В perl обработка сделана построчно с пропуском строк с комментариями. Замена выполняется через регулярное выражение s///
-Т.к. используются регулярные вырожения в словаре спецсимолы нужно экранировать зноком "\\".
+## словарь
+Словарь создан на основе файла с текстом синтаксиса помощника 1С **shcntx_ru** был разработан словарь **dict.txt** (~8000 уникальных строк).
 
-Скрипт обрабатывает один файл.
-
-## Запуск скрипта на python:
-python ./translate.py --f ./Module.bsl --o ./Module_traslate.bsl
-
-первый аргумент исходный файл, который нужно перевести, 
-второй новый файл в который будет сохранен результат замены 
-если второй аргумент не передавать, произойдет замена исходного файла
-
-скачать python:
-https://www.python.org/downloads/
-
-## Запуск скрипта на perl:
-perl ./translate.py ./Module.bsl ./Module_traslate.bsl
-
-первый аргумент исходный файл, который нужно перевести, 
-второй новый файл в который будет сохранен результат замены 
-если второй аргумент не передавать, произойдет замена исходного файла
-
-скачать perl:
-https://strawberryperl.com
-
-## Примеры запуска
-В файле Module.bsl находится модуль на котором можно проверить работу скриптов
-```shell
-perl ./translate.pl ./Module.bsl ./Module.bsl_en_pl
-python ./translate.py --f ./Module.bsl --o ./Module.bsl_en_py
-```
-linux:
-```shell
-perl ./translate.pl /home/archer/Work1C/GIT/tools_ui_1c_international/src/ToolsInternational/src/DataProcessors/UT_JSONEditor/Forms/Форма/Module.bsl
-python ./translate.py --f /home/archer/Work1C/GIT/tools_ui_1c_international/src/ToolsInternational/src/DataProcessors/UT_JSONEditor/Forms/Форма/Module.bsl
-```
-windows:
-```shell
-perl ./translate.pl C:\Work1C\GIT\1c-translation-script\Module.bsl
-perl ./translate.pl C:\Work1C\GIT\tools_ui_1c_international\src\ToolsInternational\src\DataProcessors\UT_JSONEditor\Forms\Форма\Module.bsl
-python ./translate.py --f C:\Work1C\GIT\1c-translation-script\Module.bsl
-```
-
-# Скрипт перевода с использованием словаря
-На основе файла с текстом синтаксиса помощника 1С **shcntx_ru** был разработан словарь **dict.txt** (9000 уникальных строк).
-
-Так же в начало словаря были добавлены фразы языка 1С.
+Так же в начало словаря были добавлены фразы из языка 1С, которые не отражены в синтакссинтакс-помощнике.
 
 Структура файла простая:
 ```
@@ -62,50 +17,46 @@ python ./translate.py --f C:\Work1C\GIT\1c-translation-script\Module.bsl
 НаСервере - AtServer
 НаКлиенте - AtClient
 ```
-Если в начало строки поставить знак "#" данная фраза не будет использоваться.
 
-Для перевода на основе словаря разработан новый скрипт (пока только для языка perl):
-**translate-with-dict.pl**
+Скрипт обрабатывает один файл.
 
-Замена осуществляется универсальным механизмом с помощью регулярного выражения
-`$line =~ s/\b$ru\b/$en/g;`
-т.е. заменяются слова в начале и конце которых отсутствуют буквы.
+## Запуск скриптов
+Синтаксис коммандной строки у скриптов одинаковый
+
+первый аргумент исходный файл, который нужно перевести, 
+второй новый файл в который будет сохранен результат замены 
+если второй аргумент не передавать, произойдет замена исходного файла
+
+если скрипт запустить с ключем "-i" будет открыт интерактивный ввод, 
+куда можно вставить путь к файлу, который нужно перевести
+
+## Запуск скрипта на python:
+`python translate.py файл_перевода файл_результата`
+
+`python ./translate.py ./Module.bsl ./Module_traslate.bsl`
+
+`python ./translate.py ./Module.bsl `
+
+`python ./translate.py -i`
+
+
+скачать python:
+
+https://www.python.org/downloads/
 
 ## Запуск скрипта на perl:
-Для работы скрипта в папке с файлом скрипта должен находится словарь dict.txt
+`perl translate.pl файл_перевода файл_результата`
 
-### Запуск скрипта с параметрами
+`perl ./translate.pl ./Module.bsl ./Module_traslate.bsl`
 
-`perl translate-with-dict.pl файл_перевода файл_результата`
+`perl ./translate.pl ./Module.bsl `
 
-Первый аргумент исходный файл, который нужно перевести.
+`perl ./translate.pl -i`
 
-Второй новый файл в который будет сохранен результат замены.
 
-Если второй аргумент не передавать, произойдет замена исходного файла.
-
-### Запуск скрипта с интерактивным вводам пути к файлу
-
-`perl translate-with-dict.pl -i`
-
-После будет запрос в котором можно ввести имя файла или скопировать путь из буфера обмена.
-
-Тут лучше использовать сторонние консоли, которые позволяют копировать из буфера обмена.
-
-## Скачать perl:
+скачать perl:
 
 https://strawberryperl.com
-
-
-## Примеры запуска
-linux:
-```shell
-perl translate-with-dict.pl /home/archer/Work1C/GIT/tools_ui_1c_international/src/ToolsInternational/src/DataProcessors/UT_JSONEditor/Forms/Форма/Module.bsl
-```
-windows:
-```shell
-perl translate-with-dict.pl C:\Work1C\GIT\tools_ui_1c_international\src\ToolsInternational\src\DataProcessors\UT_JSONEditor\Forms\Форма\Module.bsl
-```
 
 ### Обратная связь
 Просьба об ошибках сообщать через Issues, а так же отправлять информацию по корректировке словаря через Issues или Pull requests.
