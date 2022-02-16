@@ -17,7 +17,7 @@ col = 0
 ind = 1
 for line in lines:
     ind += 1
-    if not re.search('[А-яёЁ]', line):
+    if not re.search("[А-яёЁ]", line):
         continue
     print(f"{ind} - {line.rstrip()}")
     col += 1
