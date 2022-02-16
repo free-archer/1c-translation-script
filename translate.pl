@@ -1,144 +1,63 @@
 use strict;
+use warnings;
 use utf8;
-use Data::Dumper::Simple;
+use open qw(:std :utf8);
+#use Data::Dumper::Simple;
+#use 5.010;
 
-my @dict = (
-    { ru => 'Процедура ', en => 'Procedure '}, 
-    { ru => 'КонецПроцедуры', en => 'EndProcedure'}, 
+#get parameters
+my ($param1, $param2) = @ARGV;
 
-    { ru => 'Функция ', en => 'Function '}, 
-    { ru => 'КонецФункции', en => 'EndFunction'}, 
+my $filename;
+my $filename_en;
+if ($param1) {
+    if ($param1 eq "-i") {
+        print "Enter full-path to a module what you will plan to translate:\n";
+        $filename = <STDIN>;
+        chomp($filename);
+        $filename_en = $filename;
+    }
+    else {
+        $filename = $param1;
+        if ($param2) {
+            $filename_en = $ARGV[1];
+        }
+        else {
+            $filename_en = $filename;
+        }
+    }
+}
+else {
+    $filename = 'Module.bsl';
+    $filename_en = 'Module-en2.bsl';
+}
 
-    { ru => '#Область', en => '#Region'}, 
-    { ru => '#КонецОбласти', en => '#EndRegion'}, 
+print "The source file: $filename\n";
+print "The result file: $filename_en\n";
 
-    { ru => '&НаСервере', en => '&AtServer'}, 
-    { ru => '&НаКлиенте', en => '&AtClient'},
+print "In process ... \n";
 
-    { ru => 'Истина', en => 'True'}, 
-    { ru => 'Ложь', en => 'False'}, 
+my $filedict = "dict.txt";
+open(my $fhdict, '<:encoding(UTF-8)', $filedict)
+    or die "Could not open file '$filedict' $!";
 
-    { ru => ' Тогда', en => ' Then'}, 
-    { ru => 'КонецЕсли;', en => 'EndIf;'}, 
-    { ru => 'ИначеЕсли ', en => 'ElsIf '}, 
-    { ru => 'Иначе ', en => 'Else '}, 
-    { ru => 'Если ', en => 'If '}, 
-    { ru => 'Не ', en => 'Not '}, 
-    { ru => ' И ', en => ' And '}, 
-    { ru => ' Или ', en => ' Or '}, 
+my @dict;
+while (my $line = <$fhdict>) {
+    if($line =~ /^#/){
+        next;
+    }
+    $line =~ /(^\w+) - (\w+)$/;
 
-    { ru => 'Для ', en => 'For '}, 
-    { ru => ' Каждого ', en => ' Each '}, 
-    { ru => ' Из ', en => ' In '}, 
-    
-    { ru => ' Цикл', en => ' Do'}, 
-    { ru => 'КонецЦикла;', en => 'EndDo;'}, 
-    { ru => 'Продолжить;', en => 'Continue;'}, 
-    { ru => 'Прервать;', en => 'Breack;'}, 
+    my %rec = ();
+    $rec{'ru'} = $1;
+    $rec{'en'} = $2;
 
-    { ru => '\(Отказ\)', en => '(Cancel)'}, 
-    { ru => '\(Отказ', en => '(Cancel'}, 
-    { ru => ' Отказ,', en => ' Cancel,'}, 
-    { ru => 'Возврат;', en => 'Return;'}, 
-    { ru => 'Возврат ', en => 'Return '},  
+    push(@dict, \%rec);
+}
+close($fhdict);
+#exit;
+#warn Dumper @dict;
 
-    { ru => 'Элементы.', en => 'Items.'}, 
-    { ru => '\(Элемент\)', en => '(Item)'}, 
-
-    { ru => 'Новый Структура', en => 'New Structure'}, 
-    { ru => 'Новый Соответствие', en => 'New Map'}, 
-    { ru => 'Новый Массив', en => 'New Array'}, 
-
-    { ru => 'Попытка', en => 'Try'}, 
-    { ru => 'Исключение', en => 'Except'}, 
-    { ru => 'КонецПопытки;', en => 'EndTry;'}, 
-    { ru => 'ВызватьИсключение\(', en => 'Raise('}, 
-    { ru => 'НачалоТранзакции', en => 'BeginTransaction'}, 
-    { ru => 'ЗафиксироватьТранзакцию', en => 'CommitTransaction'}, 
-    { ru => 'ОтменитьТранзакцию', en => 'RollbackTransaction'}, 
-
-    #Операторы
-    { ru => 'Новый ', en => 'New '}, 
-    { ru => 'НСтр', en => 'NStr'}, 
-    { ru => 'Неопределено', en => 'Undefined'}, 
-    { ru => 'БлокировкаДанных', en => 'DataLock'}, 
-    { ru => 'Метаданные', en => 'Metadata'}, 
-    { ru => 'ОписаниеОповещения', en => 'NotifyDescription'}, 
-    { ru => 'Сообщить\(', en => 'Message('}, 
-
-    { ru => ' Запрос', en => ' Query'}, 
-    { ru => 'ТекстЗапроса', en => 'QueryText'}, 
-    { ru => 'УстановитьПараметр\(', en => 'SetParameter('}, 
-    { ru => 'Выполнить\(\)', en => 'Execute()'}, 
-    { ru => 'Выгрузить\(\)', en => 'Unload()'}, 
-
-    { ru => '.Добавить\(', en => '.Add('}, 
-    { ru => '.Вставить\(', en => '.Insert('}, 
-    { ru => '.Найти\(', en => '.Find('}, 
-    { ru => '.Очистить\(\)', en => '.Clear()'}, 
-    { ru => 'НайтиПоТипу\(', en => 'FindByType('}, 
-    { ru => 'Тип\(', en => 'Type('}, 
-    { ru => 'ТипЗнч\(', en => 'TypeOf('}, 
-    { ru => 'ОписаниеТипов', en => 'TypeDescription'}, 
-    { ru => 'УстановитьПривилегированныйРежим', en => 'SetPrivilegedMode'}, 
-    { ru => 'ЗаписьЖурналаРегистрации', en => 'WriteLogEvent'}, 
-    { ru => 'ЗаполнитьЗначенияСвойств', en => 'FillPropertyValues'}, 
-    { ru => 'Символы.ПС', en => 'Chars.LF'}, 
-
-    { ru => '.Свойство\(', en => '.Property('}, 
-    { ru => 'Перем ', en => 'Var '}, 
-    { ru => 'ЭтотОбъект', en => 'ThisObject'}, 
-
-    { ru => 'РеквизитФормыВЗначение', en => 'FormAttributeToValue'}, 
-    { ru => 'ПолучитьМакет\(', en => 'GetTemplate('}, 
-    { ru => 'ПолучитьИмяВременногоФайла', en => 'GetTempFileName'}, 
-    { ru => 'СоздатьКаталог\(', en => 'CreateDirectory('}, 
-    { ru => 'ОткрытьПотокДляЧтения', en => 'OpenStreamForRead'}, 
-    { ru => 'ЧтениеZipФайла', en => 'ZipFileReader'}, 
-    { ru => 'ИзвлечьВсе\(', en => 'ExtractAll('}, 
-    { ru => 'РежимВосстановленияПутейФайловZIP', en => 'ZIPRestoreFilePathsMode'}, 
-    { ru => 'НайтиФайлы\(', en => 'FindFiles('}, 
-    { ru => 'ПолучитьРазделительПути', en => 'GetPathSeparator'}, 
-    { ru => 'СтрЗаменить\(', en => 'StrReplace('}, 
-    { ru => 'ДвоичныеДанные\(', en => 'BinaryData('}, 
-    { ru => 'ПоместитьВоВременноеХранилище', en => 'PutToTempStorage'}, 
-    { ru => 'ПолучитьИзВременногоХранилища', en => 'GetFromTempStorage'}, 
-    { ru => 'ЗначениеЗаполнено\(', en => 'ValueIsFilled('}, 
-    { ru => 'Модифицированность', en => 'Modified'}, 
-    { ru => '', en => ''},     
-
-    #События формы
-    { ru => 'ПриСозданииНаСервере\(Отказ, СтандартнаяОбработка\)', en => 'OnCreateAtServer(Cancel, StandardProcessing)'}, 
-    { ru => 'ПриОткрытии\(Отказ\)', en => 'OnOpen(Cancel)'}, 
-    { ru => 'СтандартнаяОбработка', en => 'StandardProcessing'}, 
-    { ru => '.Видимость', en => '.Visible'}, 
-    { ru => '.Доступность', en => '.Enabled'}, 
-    { ru => 'ПоказатьВопрос\(', en => 'ShowQueryBox('}, 
-    { ru => 'РежимДиалогаВопрос', en => 'QuestionDialogMode'}, 
-    { ru => 'ПередЗакрытием\(', en => 'BeforeClose('}, 
-    { ru => 'ЗавершениеРаботы,', en => 'Exit,'}, 
-    { ru => 'ТекстПредупреждения,', en => 'WarningText,'}, 
-    { ru => 'НачатьУдалениеФайлов', en => 'BeginDeletingFiles'}, 
-    { ru => 'ПодключитьОбработчикОжидания', en => 'AttachIdleHandler'}, 
-    { ru => 'Закрыть\(', en => 'Close('}, 
-    { ru => '', en => ''}, 
-    { ru => '', en => ''}, 
-    #Переменные
-    { ru => ' Параметры.', en => ' Parameters.'}, 
-    { ru => '=Параметры.', en => '=Parameters.'}, 
-    { ru => 'ДополнительныеПараметры', en => 'AdditionalParameters'}, 
-    
-    { ru => 'УникальныйИдентификатор', en => 'UUID'}, 
-    { ru => 'ЭтаФорма', en => 'ThisForm'}, 
-    { ru => '\(Команда\)', en => '(Command)'}, 
-    { ru => ' Экспорт', en => ' Export'}, 
-    { ru => 'Формат\(', en => 'Format('}, 
-
-);
-
-warn Dumper @dict;
-
-my $filename = $ARGV[0];
 open(my $fh, '<:encoding(UTF-8)', $filename)
     or die "Could not open file '$filename' $!";
 
@@ -150,30 +69,27 @@ close($fh);
 
 my $doreplases = 0;
 foreach my $reg (@dict) {
-    if ($reg->{ru}  eq '' || $reg->{en} eq '') {
-        next;
-    }
-    
     foreach my $line (@lines) {
         unless ($line =~ /^\//) {
             my $old_line = $line;
-            $line =~ s/$reg->{ru}/$reg->{en}/g;
+
+	    my $ru = $reg->{ru};
+	    my $en = $reg->{en};
+
+	    #$line =~ s/(?<![А-я])$ru(?![А-я])/$en/g;
+        $line =~ s/\b$ru\b/$en/g;
+        #$line =~ s/(?<=[^А-яёЁ]|^)$ru(?=[^А-яёЁ]|$)/$en/g;
+
             if ($line ne $old_line) {
                 #print "$old_line -> $line";
                 $doreplases++;
+               #
             }
         }
     }
 }
 
-my $filename_en = '';
-if ($ARGV[1]) {
-    $filename_en = $ARGV[1];    
-} else {
-    $filename_en = $filename;
-}
-
-open(my $fw, '>:encoding(UTF-8)', $filename_en) 
+open(my $fw, '>:encoding(UTF-8)', $filename_en)
     or die "Could not open file '$filename' $!";
 
 foreach my $line (@lines) {
@@ -181,4 +97,4 @@ foreach my $line (@lines) {
 }
 close($fw);
 
-print "Done $doreplases replases \n"
+print "Done $doreplases replaces \n"
