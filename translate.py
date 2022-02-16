@@ -7,7 +7,7 @@ filedict = 'dict.txt'
 dict_ru_en = list()
 
 params = sys.argv
-print(len(params))
+
 if len(params) == 2:
     filename = params[1]
     filename_en = filename
@@ -35,7 +35,6 @@ with open(filedict, "r", encoding="utf-8") as f:
 with open(filename, "r", encoding="utf-8") as f:
     text = f.read()
 
-count = 0
 with open(filename_en, "w", encoding="utf-8") as f:
     for reg in dict_ru_en:
         ru = reg[0][0]
@@ -46,5 +45,5 @@ with open(filename_en, "w", encoding="utf-8") as f:
     f.write(text)
 
 time = datetime.now() - start_time
-print(f"Done! Time: {time}")
+print(f"Done! Run time: {time}")
 
