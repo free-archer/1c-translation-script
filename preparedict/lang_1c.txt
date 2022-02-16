@@ -7,6 +7,8 @@
 ОбработчикиСобытий - EventHandlers
 ОбработчикиСобытийФормы - FormEventHandlers
 Инициализация - Initialize
+ОбработчикиСобытийЭлементовШапкиФормы - FormHeaderItemsEventHandlers
+ОбработчикиКомандФормы - CommandFormEventHandlers
 #Основные операторы
 КонецОбласти - EndRegion
 НаСервере - AtServer
@@ -52,3 +54,10 @@
 Или - Or
 Экспорт - Export
 СтандартнаяОбработка - StandardProcessing
+#additional
+ВыбраннаяСтрока - SelectedRow
+сч - ind
+Знач - Val
+ВОЗР - ASC
+УБЫВ - DESC
+НоваяСтрока - NewLine
