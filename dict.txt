@@ -57,6 +57,7 @@
 #additional
 ВыбраннаяСтрока - SelectedRow
 сч - ind
+Знач - Val
 ВОЗР - ASC
 УБЫВ - DESC
 НоваяСтрока - NewLine
