@@ -9,8 +9,15 @@ dict_ru_en = list()
 params = sys.argv
 
 if len(params) == 2:
-    filename = params[1]
-    filename_en = filename
+    if params[1] == "-i":
+        print("Введите имя файла:")
+        filename = input()
+        filename.rstrip()
+        filename_en = filename
+        
+    else:
+        filename = params[1]
+        filename_en = filename
 
 elif len(params) == 3:
     filename = params[1]
