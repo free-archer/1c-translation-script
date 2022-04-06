@@ -62,6 +62,7 @@
 УБЫВ - DESC
 НоваяСтрока - NewLine
 #Ключевые слова из файла shcntx_ru
+.Область - .Area
 WSСсылки - WSReferences
 АгентКлиентскогоПриложения - ClientApplicationAgent
 БезопасноеХранилище - SecureStorage
@@ -923,7 +924,6 @@ URL - URL
 ЭлементФреймHTML - HTMLFrameElement
 ФиксированныйРазмер - NoResize
 ЭлементНаборФреймовHTML - HTMLFrameSetElement
-Колонки - Cols
 Строки - Rows
 ЭлементМетаHTML - HTMLMetaElement
 Содержание - Content
@@ -4527,7 +4527,6 @@ URIПространстваИменСхемыДляСхемыXML - SchemaForSche
 НачатьАвтогруппировкуСтрок - StartRowAutoGrouping
 НачатьГруппуКолонок - StartColumnGroup
 НачатьГруппуСтрок - StartRowGroup
-Область - Area
 ОтменитьПреобразованиеДокумента - RevertToDefaultMode
 ПоказатьУровеньГруппировокКолонок - ShowColumnGroupLevel
 ПоказатьУровеньГруппировокСтрок - ShowRowGroupLevel
