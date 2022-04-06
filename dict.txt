@@ -900,7 +900,7 @@ URL - URL
 ПосещеннаяСсылка - Vlink
 Связь - Link
 Фон - Background
-ЦветТекста - Text
+ЦветТекста - TextColor
 ЦветФона - BgColor
 ЭлементКнопкаHTML - HTMLButtonElement
 Форма - Form
