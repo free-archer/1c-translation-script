@@ -1090,7 +1090,7 @@ XBase - XBase
 Образцы - Patterns
 Перечисления - Enumerations
 ФасетXDTO - XDTOFacet
-Вид - Type
+Вид - Kind
 ЗначениеXDTO - XDTODataValue
 ЛексическоеЗначение - LexicalValue
 Список - List
