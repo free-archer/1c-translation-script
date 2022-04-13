@@ -1,5 +1,4 @@
 #Области
-Область - Region
 ПрограммныйИнтерфейс - Public
 СлужебныйПрограммныйИнтерфейс - Internal
 СлужебныеПроцедурыИФункции - Private
@@ -10,7 +9,6 @@
 ОбработчикиСобытийЭлементовШапкиФормы - FormHeaderItemsEventHandlers
 ОбработчикиКомандФормы - CommandFormEventHandlers
 #Основные операторы
-КонецОбласти - EndRegion
 НаСервере - AtServer
 НаКлиенте - AtClient
 НаСервереБезКонтекста - AtServerNoContext
@@ -62,7 +60,7 @@
 УБЫВ - DESC
 НоваяСтрока - NewLine
 #Ключевые слова из файла shcntx_ru
-.Область - .Area
+Область - Area
 WSСсылки - WSReferences
 АгентКлиентскогоПриложения - ClientApplicationAgent
 БезопасноеХранилище - SecureStorage

@@ -43,6 +43,10 @@ with open(filename, "r", encoding="utf-8") as f:
     text = f.read()
 
 with open(filename_en, "w", encoding="utf-8") as f:
+#Переведем области отдельно, т.к. есть дубль в словаре
+    text = text.replace("#Область", "#Region")
+    text = text.replace("#КонецОбласти", "#EndRegion")
+
     for reg in dict_ru_en:
         ru = reg[0][0]
         en = reg[0][1]
