@@ -4409,7 +4409,6 @@ Shift - Shift
 ПереопределениеXS - XSRedefine
 ОпределениеГруппыАтрибутовXS - XSAttributeGroupDefinition
 Маска - Wildcard
-Ссылка - Reference
 ЭтоСсылка - IsReference
 РазрешитьСсылку - ResolveReference
 ИспользованиеАтрибутаXS - XSAttributeUse

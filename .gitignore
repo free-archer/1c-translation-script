@@ -2,3 +2,4 @@
 *.sh
 /.vscode/
 /.idea/
+venv
