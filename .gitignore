@@ -3,3 +3,8 @@
 /.vscode/
 /.idea/
 venv
+translate
+bin/
+obj/
+testfile*
+/sharp/dict.txt
