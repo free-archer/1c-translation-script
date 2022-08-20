@@ -81,3 +81,4 @@ https://strawberryperl.com
 Выполнить можно с помощью команды: 
 `dotnet run`
 В релизах лежит испольняемый файл для Linux.
+https://github.com/free-archer/1c-translation-script/releases/download/v1.0/sharptraslate
