@@ -12,8 +12,6 @@ const stdin = readline.createInterface({
 const filedict = 'dict.txt'
 let dict_ru_en = []
 
-const args = process.argv
-
 let [,, filename, filename_en] = process.argv
 
 if (filename== "-i") {
