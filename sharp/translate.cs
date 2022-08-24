@@ -28,8 +28,8 @@ internal class Program
             filename = args[0];   
             filename_en = args[1];
         } else {
-            filename = "testfile.txt";
-            filename_en = "testfile_en.txt";
+            filename = "../Module.bsl";
+            filename_en = "../Module_en.bsl";
         }
 
         Console.WriteLine($"Исходный файл: {filename}");
@@ -75,7 +75,10 @@ internal class Program
         if (File.Exists(filename)) {
             text = File.ReadAllText(filename);
         }
-        
+
+        //Переведем области отдельно, т.к. есть дубль в словаре
+        text = text.Replace("#Область", "#Region");
+        text = text.Replace("#КонецОбласти", "#EndRegion");        
         
         foreach (Tuple<String, String> dict in dict_ru_en) {
             //String pattern = $"\\b{dict.Item1}\\b";
