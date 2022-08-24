@@ -86,9 +86,7 @@ https://github.com/free-archer/1c-translation-script/releases/download/v1.0/shar
 ## Реализация на Java Script находится в файле translate.js
 Сделал реализацию на Node.js. Чтобы посмотреть, как работает Node и попрактиковаться в **translate.js**.
 
-Механизм работы скрипта и ключи общие.
-
-Перед запуском нужно установить Node.js https://nodejs.org/en/download/
+Механизм работы скрипта и ключи общие. Перед запуском нужно установить Node.js https://nodejs.org/en/download/
 
 ### Примеры запуска на Node:
 `node ./translate.js ./Module.bsl ./Module_traslate.bsl`
@@ -99,16 +97,11 @@ https://github.com/free-archer/1c-translation-script/releases/download/v1.0/shar
 
 # Производительность
 Сделал замеры производительности. 
-
 Переводился файл из 5000 строк.
-
 Результаты меня немного удивили:
 
 
-python - 29 секунд
-
-perl - 37 секунд
-
-c# - 1,352 секунды (1352 милисекунды)
-
-node - 0,558 секунды (558 милисекунды)
+- python - 29 секунд
+- perl - 37 секунд
+- c# - 1,352 секунды (1352 милисекунды)
+- node - 0,558 секунды (558 милисекунды)
